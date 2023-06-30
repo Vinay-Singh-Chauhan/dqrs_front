@@ -12,7 +12,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Navbar />
     <div className="container">
     <Account/>
-    
+    {/* <Qrform/> */}
+    {/* <Homepage/> */}
     </div>
     <Footer />
   </React.StrictMode>,

@@ -12,7 +12,7 @@ const Qrform = () => {
   useEffect(()=>{
     if(generate){
       var div= document.getElementById("here_msg");
-      div.innerHTML="Click on QR to Dwonload it."
+      div.innerHTML="Click on QR to Download it."
       // div.append()
       // div.setAttribute('display','none')
       // div.setAttribute('vi/')
@@ -100,19 +100,19 @@ const Qrform = () => {
 
   
   return (
-    <main>
-      <div className="qr_code" id={'qr_code'} onClick={downloadQR}>
+    <main className="qrform_main">
+      <div className="qrform_qr_code" id={'qr_code'} onClick={downloadQR}>
         <img style={{ cursor: "pointer" }}  id="canvas"></img>
         <p id={'here_msg'}>Your QR will appear here</p>
       </div>
-      <div className="form">
+      <div className="qrform_form">
         <input
           value={link}
           onChange={onChangeInput}
           placeholder="Your link here"
-          className="input link"
+          className="qrform_input qrform_link"
         ></input>
-        <div className="size_input">
+        <div className="qrform_size_input">
           <Dropdown
             placeHolder={"Size"}
             isMulti={false}
@@ -121,7 +121,7 @@ const Qrform = () => {
             onChange={onChangeSize}
           />
         </div>
-        <div onClick={onSubmit} className="submit">
+        <div onClick={onSubmit} className="qrform_submit">
           Generate Dynamic QR
         </div>
       </div>

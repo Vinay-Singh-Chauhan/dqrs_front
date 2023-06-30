@@ -58,9 +58,9 @@ const see_qr = ({link}) => {
       };
   return (
     <div className="main">
-<div className="qr_code" id={'qr_code'} onClick={downloadQR}>
+<div className="see_qr_qr_code" id={'qr_code'} onClick={downloadQR}>
         <img style={{ cursor: "pointer" }}  id="canvas"></img>
-        <p id={'here_msg'}>Your QR will appear here</p>
+        <p id={'see_qr_here_msg'}>Your QR will appear here</p>
       </div>
 <div className="size_input">
           <Dropdown

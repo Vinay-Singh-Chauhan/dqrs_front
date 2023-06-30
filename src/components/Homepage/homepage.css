@@ -1,4 +1,4 @@
-.qr_image{
+.homepage_qr_image{
    background-image: url('./qr_image.png');
    height: 400px;
    width: 400px;
@@ -6,7 +6,7 @@
    background-size: cover;
    
 }
-.pre_head{
+.homepage_pre_head{
     margin: 0.5rem 0;
     font-size: 1.2rem;
     /* font-family:monospace; */
@@ -14,13 +14,13 @@
     color: gray;
     font-weight: 800;
 }
-.main_head{
+.homepage_main_head{
     margin: 0.5rem 0;
     color: antiquewhite;
     font-size: 3rem;
     font-weight: 900;
 }
-.post_head{
+.homepage_post_head{
     margin: 0.5rem 0;
     color: antiquewhite;
     font-size: 2rem;
@@ -32,7 +32,7 @@
     display: flex;
     flex-direction: column;
 }
-main{
+.homepage_main{
     display: flex;
     justify-content: space-between;
 }
@@ -41,7 +41,7 @@ main{
     .homepage_title{
         width: 90%;
     }
-    main{
+    .homepage_main{
         /* display: flex; */
         flex-direction: column-reverse;
     }
@@ -53,11 +53,11 @@ main{
 
         width: 90%;
     } 
-    .qr_image{
+    .homepage_qr_image{
         align-items: center;
 
     }
-    main{
+    .homepage_main{
         align-items: center;
 
         /* display: flex; */

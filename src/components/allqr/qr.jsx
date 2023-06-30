@@ -39,7 +39,7 @@ const QR = () => {
     }, [])
     
   return (
-    <div className="main">
+    <div className="allqr_main">
        { qrs.map((e)=>{
         return <Qrline key={e._id} link={e.link}/>
        })}

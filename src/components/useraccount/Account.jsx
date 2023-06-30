@@ -9,11 +9,11 @@ const Account = () => {
     //     setActiveTab(e.target.name)
     // }
   return (
-    <main>
-        <div className="menu_bar">
-            <div name='account' onClick={(e)=>setActiveTab('account')} className="menu_item user"><i className="fa-regular fa-user"></i></div>
-            <div name ='qr' onClick={(e)=>setActiveTab('qr')} className="menu_item qrs"><i className="fa-solid fa-qrcode"></i></div>
-            <div name='pay' onClick={(e)=>setActiveTab('pay')} className="menu_item plan"><i className="fa-solid fa-money-check-dollar"></i></div>
+    <main className='account_main'>
+        <div className="account_menu_bar">
+            <div name='account_account' onClick={(e)=>setActiveTab('account')} className="account_menu_item account_user"><i className="fa-regular fa-user"></i></div>
+            <div name ='qr' onClick={(e)=>setActiveTab('qr')} className="account_menu_item account_qrs"><i className="fa-solid fa-qrcode"></i></div>
+            <div name='pay' onClick={(e)=>setActiveTab('pay')} className="account_menu_item account_plan"><i className="fa-solid fa-money-check-dollar"></i></div>
         </div>
         {/* <User /> */}
         {activeTab=='account' && <User/>}
