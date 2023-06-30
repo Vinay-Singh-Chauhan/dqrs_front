@@ -1,0 +1,126 @@
+/* select {
+    appearance: none;
+
+} */
+main{
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.form{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+}
+input{
+    margin: 1rem 0rem;
+    width: 100%;
+    padding: 0rem 0.2rem;
+    background-color: transparent;
+    color: azure;
+    font-size: 1rem;
+    border: none;
+    border-bottom: solid purple;
+    height: 2rem;
+}
+input:focus{
+    outline: none;
+}
+.submit{
+    cursor: pointer;
+    text-align: center;
+    align-self: flex-end;
+    margin: 1rem 0rem;
+    width: 50%;
+    padding: 0.2rem 0.2rem;
+    background-color: transparent;
+    color: azure;
+    font-size: 1.5rem;
+    box-shadow: none;
+    border-radius: 2rem;
+    background-color: rgba(255, 228, 196, 0.21);
+    /* border: none;
+    sh
+    border-bottom: solid purple; */
+    /* height: 2rem; */
+}
+ main{
+     display: flex;
+     justify-content: space-between;
+ }
+.size_input label{
+    color: antiquewhite;
+}
+select{
+    margin-top: 0;
+}
+.size_input_item{
+    /* border: ; */
+    background-color:rgba(88, 26, 155, 0.793);
+    color: azure;
+}
+.size_input_item:hover{
+    background-color: rgb(0, 0, 0);
+    color: black;
+}
+
+.qr_code{
+    width: 40%;
+    min-height: 60vh;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: antiquewhite;
+}
+/* .here */
+/* .qr_code{
+    background-image: url('./qr_here.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    backg;
+} */
+ /* media query */
+ @media (max-width: 576px) { 
+     .homepage_title{
+         width: 90%;
+     }
+     main{
+         /* display: flex; */
+         flex-direction: column-reverse;
+     }
+     .form{
+        width: 90%;
+     }
+     .qr_code{
+        width: 90%;
+     }
+     .submit{
+        align-self: center;
+        font-size: 1rem;
+     }
+  }
+ 
+ @media (max-width: 768px) {
+    .form{
+        width: 90%;
+     }
+     .qr_code{
+        width: 90%;
+     }
+     .submit{
+        align-self: center;
+        font-size: 1rem;
+     }
+     main{
+         align-items: center;
+ 
+         /* display: flex; */
+         flex-direction: column-reverse;
+     }
+  }
+ 

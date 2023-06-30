@@ -1,0 +1,28 @@
+footer{
+    padding: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    background-color: azure;
+    height:fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:0.7rem  0;
+}
+.copyright{
+    font-weight: bold;
+    margin-top:0.7rem;
+}
+.powered_by{
+    font-size: 1.2rem;
+    margin:0.7rem  0;
+}
+.footer_item{
+    color:gray;
+    font-weight: 600;
+    font-size: 1.3rem;
+
+}
