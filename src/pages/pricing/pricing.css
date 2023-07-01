@@ -1,0 +1,10 @@
+.pricing_main{
+    color: antiquewhite;
+    letter-spacing: 0.2rem;
+    line-height: 2rem;
+    background-color: rgba(0, 0, 0, 0.301);
+    padding: 2rem;
+}
+.pricing_h1{
+    margin: 1.5rem 0;
+}

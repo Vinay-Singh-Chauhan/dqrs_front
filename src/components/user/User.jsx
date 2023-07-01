@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import './user.css'
-const User = () => {
-    const [email, setemail] = useState('chauhamsvinay@gmail.com')
+const User = ({useremail}) => {
+    const [email, setemail] = useState(useremail)
   return (
     <div className="user_main">
         <div className="user_email">
         <div className='user_label'>Change Email: </div>
         <input
-        //   value={link}
-        //   onChange={onChangeInput}
-          placeholder={email}
+        defaultValue={email}
+          // value={email}
+          // onChange={onChangeInput}
+          // placeholder={email}
           className="user_input user_link"
         ></input>
         </div>
@@ -29,7 +30,7 @@ const User = () => {
         //   value={link}
         //   onChange={onChangeInput}
         type='password'
-          placeholder={email}
+          placeholder={'Current Password'}
           className="user_input user_link"
         ></input>
         </div>

@@ -57,7 +57,7 @@ const see_qr = ({link}) => {
         onSubmit()
       };
   return (
-    <div className="main">
+    <div className="see_qr_main">
 <div className="see_qr_qr_code" id={'qr_code'} onClick={downloadQR}>
         <img style={{ cursor: "pointer" }}  id="canvas"></img>
         <p id={'see_qr_here_msg'}>Your QR will appear here</p>

@@ -1,0 +1,99 @@
+
+.payment_main{
+    background-color: rgba(0, 0, 0, 0.201);
+    /* padding: 0 0; */
+    width: 100%;
+    min-height: 50vh;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.payment_center_msg{
+    /* justify-self: center; */
+    text-align: center;
+    color: antiquewhite;
+}
+/* .form{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+} */
+.payment_label{
+    margin: 1rem 0rem;
+    width: 50%;
+    padding: 0rem 0.2rem;
+    color:antiquewhite;
+    font-size: 1rem;
+    
+    height: 2rem;
+}
+.payment_input{
+    margin: 1rem 0rem;
+    margin-right: 2rem;
+    width: 50%;
+    padding: 0rem 0.2rem;
+    background-color: transparent;
+    color: azure;
+    font-size: 1rem;
+    border: none;
+    border-bottom: solid purple;
+    height: 2rem;
+}
+.payment_input:focus{
+    outline: none;
+}
+.payment_submit{
+    cursor: pointer;
+    text-align: center;
+    align-self: flex-end;
+    margin: 1rem 0rem;
+    width: 40%;
+    align-self: center;
+    /* margin-right: 2rem; */
+    padding: 0.2rem 0.2rem;
+    background-color: transparent;
+    color: azure;
+    font-size: 1.5rem;
+    box-shadow: none;
+    border-radius: 2rem;
+    background-color: rgba(255, 228, 196, 0.21);
+    /* border: none;
+    sh
+    border-bottom: solid purple; */
+    /* height: 2rem; */
+}
+
+ /* media query */
+ @media (max-width: 576px) { 
+     
+     .payment_form{
+        width: 90%;
+     }
+     
+     .payment_submit{
+        align-self: center;
+        font-size: 1rem;
+     }
+  }
+ 
+ @media (max-width: 768px) {
+    .payment_form{
+        width: 90%;
+     }
+     
+     .payment_submit{
+        align-self: center;
+        font-size: 1rem;
+     }
+     .payment_main{
+         align-items: center;
+ 
+         /* display: flex; */
+         flex-direction: column-reverse;
+     }
+  }
+ 

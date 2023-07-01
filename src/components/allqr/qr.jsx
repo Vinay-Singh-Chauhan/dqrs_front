@@ -3,13 +3,13 @@ import './qr.css'
 import Qrline from '../qrline/Qrline'
 const api="http://127.0.0.1:5000/api/qr"
 
-const QR = () => {
+const QR = ({useremail}) => {
 
     const [qrs, setQrs] = useState([]
     )
     const [loading, setLoading] = useState(true)
     const getQRs=async()=>{
-        const data={email:"chauhansvinay@gmail.com"}
+        // const data={email:useremail}
          let response = await fetch(api, {
             method: "GET", // *GET, POST, PUT, DELETE, etc.
             mode: "cors", // no-cors, *cors, same-origin
@@ -17,7 +17,7 @@ const QR = () => {
             credentials: "same-origin", // include, *same-origin, omit
             headers: {
               "Content-Type": "application/json",
-              "authorization":"chauhansvinay@gmail.com"
+              "authorization":useremail
               // 'Content-Type': 'application/x-www-form-urlencoded',
             },
             redirect: "follow", // manual, *follow, error
