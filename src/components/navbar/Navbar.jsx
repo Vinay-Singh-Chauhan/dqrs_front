@@ -1,25 +1,10 @@
 import React, { useState ,useEffect} from 'react'
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import './navbar.css'
-import fetchUser from '../../fetchuser/fetchuser';
+import useAuth from '../../../hooks/useAuth';
 const Navbar = () => {
-  const [loggedIn, setLoggedIn] = useState(false)
-//   useEffect(() => {
-//     getUser()
-//   }, [loggedIn])
-//   const getUser=async()=>{
-// let response=await fetchUser()
-// // console.log(user)
-// if(!response.success){
-//   router=useNavigate()
-//   router.push('/signup')
-//   // router.push('/')
-//   // return
-// }else{
-  
-//   setLoggedIn(true)
-// }
-// }
+  const {auth}=useAuth()
+  const [loggedIn, setLoggedIn] = useState(auth?.accessToken?true:false)
   return (
     <nav>
         <div className="brand_name">

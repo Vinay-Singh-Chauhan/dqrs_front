@@ -5,6 +5,7 @@ import useModal from '../modal/useModal'
 import QRCode from "qrcode";
 import Editable from '../editable/Editable';
 import QRContext from '../../../context/allqrcontext';
+import useAuth from '../../../hooks/useAuth';
 const Qrline = ({link,uuid}) => {
   const inputRef = useRef();
   const context = useContext(QRContext);
@@ -15,6 +16,7 @@ const Qrline = ({link,uuid}) => {
   const [size, setSize] = useState("100X100");
   const [imgurl, setImgurl] = useState("");
   const [editing, setEditing] = useState(false)
+  const {auth,setAuth}=useAuth()
   useEffect(() => {
     
   }, [editing])
@@ -23,8 +25,8 @@ const Qrline = ({link,uuid}) => {
   
 
   const handleDelete=async()=>{
-    await deleteLink(localStorage.getItem('token'),uuid)
-    getQRs(localStorage.getItem('token'))
+    await deleteLink(uuid,auth,setAuth)
+    getQRs(auth,setAuth)
   }
   const editLink=async(e)=>{
     console.log(e.target)
@@ -38,7 +40,7 @@ setEditing(!editing)
       var inp=document.getElementById("link_input")
       console.log(inp.value)
       setNewLink(inp.value)
-      await updateLink(localStorage.getItem('token'),uuid,newLink)
+      await updateLink(uuid,newLink,auth)
       e.target.classList.remove('fa-check')
       e.target.classList.add('fa-pen-to-square')
       setEditing(false)

@@ -3,21 +3,24 @@ import "./account.css";
 import User from "../user/User";
 import QR from "../allqr/qr";
 import Payments from "../payments/payments";
-import fetchUser from "../../fetchuser/fetchuser";
 import useAuth from "../../../hooks/useAuth";
+import fetchUser from "../../fetchuser/fetchuser";
+
 const Account = () => {
   const [activeTab, setActiveTab] = useState("account");
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({});
-  const { auth } = useAuth();
-  const token=auth.accessToken;
+  const {auth,setAuth} =useAuth()
+  // const token=auth.accessToken;
   useEffect(() => {
-    console.log(token)
-    getUser(token);
+    // console.log(token)
+    getUser();
+    
   }, [loading]);
   const getUser = async () => {
-    console.log("found you")
-    let response = await fetchUser();
+    // console.log("found you")
+    let response = await fetchUser(auth,setAuth);
+    setUser(response.email)
     setLoading(false);
     console.log(response);
   };
@@ -57,7 +60,7 @@ const Account = () => {
         {/* <User /> */}
         {activeTab == "account" && <User useremail={user} />}
         {activeTab == "qr" && <QR />}
-        {activeTab == "pay" && <Payments />}
+        {activeTab == "pay" && <Payments auth={auth} />}
       </main>
     );
 };

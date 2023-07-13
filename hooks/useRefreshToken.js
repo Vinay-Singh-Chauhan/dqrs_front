@@ -1,8 +1,8 @@
 import useAuth from './useAuth'
-const api='http://localhost:5000/refresh'
+const api='http://127.0.0.1:5000/refresh'
 const useRefreshToken = () => {
-    const {setAuth}=useAuth;
-    const refresh=async()=>{
+    // const {setAuth}=useAuth();
+    const refresh=async(setAuth)=>{
         let response = await fetch(api, {
             method: "GET", // *GET, POST, PUT, DELETE, etc.
             mode: "cors", // no-cors, *cors, same-origin
@@ -14,8 +14,8 @@ const useRefreshToken = () => {
             redirect: "follow", 
             referrerPolicy: "no-referrer",
           });
-          response=await response.json()
           console.log(response)
+          response=await response.json()
 
           setAuth(prev=>{
             console.log(JSON.stringify(prev))

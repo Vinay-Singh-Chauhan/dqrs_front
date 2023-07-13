@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './payments.css'
-const Payments = () => {
+const Payments = ({auth}) => {
     const [email, setemail] = useState('chauhamsvinay@gmail.com')
   return (
     <div className="payment_main">

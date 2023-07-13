@@ -19,6 +19,20 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
+        path:"/user",
+        element:<RequireAuth/>,
+        children:[
+          {
+            path: "/user/account",
+            element: <Account />,
+          },
+          {
+            path: "/user/genqr",
+            element: <Qrform />,
+          },
+        ]
+      },
+      {
         path: "/",
         element: <Homepage />,
       },
@@ -41,20 +55,7 @@ const router = createBrowserRouter([
       
     ],
   },
-  {
-    path:"/",
-    element:<RequireAuth/>,
-    children:[
-      {
-        path: "/account",
-        element: <Account />,
-      },
-      {
-        path: "/genqr",
-        element: <Qrform />,
-      },
-    ]
-  }
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

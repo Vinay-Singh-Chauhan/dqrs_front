@@ -5,16 +5,18 @@ import QRContext from "../../../context/allqrcontext";
 import useAuth from "../../../hooks/useAuth";
 const api = "http://127.0.0.1:5000/api/qr";
 const QR = () => {
+  const {auth,setAuth}=useAuth()
   // const [qrs, setQrs] = useState([]);
-  const context = useContext(QRContext);
-  const {qrs,getQRs}=context
   const [loading, setLoading] = useState(true);
+  const context = useContext(QRContext);
+  console.log(context)
+  // const {auth}=useAuth()
   useEffect(() => {
-    const {auth}=useAuth()
-    getQRs(auth.token);
+    getQRs(auth,setAuth);
     setLoading(false)
   }, []);
-
+  // const [qrs, setqrs] = useState([])
+  const {qrs,getQRs}=context
 
   if (loading) {
     return <div className="">loading</div>;
