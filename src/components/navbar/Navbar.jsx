@@ -1,29 +1,48 @@
-import React from 'react'
+import React, { useState ,useEffect} from 'react'
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import './navbar.css'
+import fetchUser from '../../fetchuser/fetchuser';
 const Navbar = () => {
+  const [loggedIn, setLoggedIn] = useState(false)
+//   useEffect(() => {
+//     getUser()
+//   }, [loggedIn])
+//   const getUser=async()=>{
+// let response=await fetchUser()
+// // console.log(user)
+// if(!response.success){
+//   router=useNavigate()
+//   router.push('/signup')
+//   // router.push('/')
+//   // return
+// }else{
+  
+//   setLoggedIn(true)
+// }
+// }
   return (
     <nav>
         <div className="brand_name">
-        Dynamic_QRs
+        <Link  className='link_style' to={'/'}>Dynamic_QRs</Link>
         </div>
        <ul className='navbar'>
 
         
         <li className='nav_item'>
-          Home
+          <Link  className='link_style' to={"/"}>Home</Link>
         </li>
         <li className='nav_item'>
-          About
+          <Link  className='link_style' to={"/about"}>About</Link>
         </li>
         <li className='nav_item'>
-          Pricing
+          <Link  className='link_style' to={"/pricing"}>Pricing</Link>
         </li>
         <li className='nav_item'>
-          SignIn
+          <Link  className='link_style' to={loggedIn?'/account':"/signin"}>{loggedIn?"Account":"SignIn"}</Link>
         </li>
         </ul> 
         <div className="get_started">
-        Get Started
+        <Link  className='link_style' to={loggedIn?'/genqr':"/signup"}>{loggedIn?'New QR':"Get Started"}</Link>
         </div>
     </nav>
   )

@@ -44,8 +44,15 @@ nav{
     margin: 0 2rem;
     color: antiquewhite;
 }
+.link_style{
+    color: antiquewhite;
+    text-decoration: none;
 
-
+}
+.link_style:hover{
+    text-decoration: underline;
+    
+}
 @media (max-width: 576px) { 
     .homepage_title{
         width: 90%;

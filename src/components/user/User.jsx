@@ -37,6 +37,12 @@ const User = ({useremail}) => {
         <div onClick={()=>{}} className="user_submit">
           Update
         </div>
+        <div onClick={()=>{
+          localStorage.removeItem('token')
+          
+        }} className="user_submit">
+          Logout
+        </div>
     </div>
   )
 }

@@ -16,6 +16,16 @@ body{
 }
 .container
 {
-    
+    min-height: 45vh;   
     padding: 5% 10%;
+}
+.offscreen{
+    color: antiquewhite;
+    visibility: hidden; 
+    height: 0;
+}
+.instructions,.errorMsg{
+    color: antiquewhite;
+    visibility:visible;
+    
 }

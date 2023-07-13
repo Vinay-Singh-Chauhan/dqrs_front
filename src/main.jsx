@@ -1,29 +1,68 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import Navbar from './components/navbar/Navbar.jsx'
-import './index.css'
-import Footer from './components/footer/Footer.jsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Qrform from "./components/qrform/qrform.jsx";
+import Homepage from "./components/Homepage/Homepage.jsx";
+import Account from "./components/useraccount/Account.jsx";
+import About from "./pages/about/About.jsx";
+import Pricing from "./pages/pricing/pricing.jsx";
+import Signup from "./pages/signup/signup.jsx";
+import Login from "./pages/login/Login.jsx";
+import QRState from "../context/allqrstate";
+import RequireAuth from './components/requireAuth/RequireAuth.jsx'
+import { AuthProvider } from "./../context/authContext.jsx";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Homepage />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/pricing",
+        element: <Pricing />,
+      },
+      {
+        path: "/signin",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
+      
+    ],
+  },
+  {
+    path:"/",
+    element:<RequireAuth/>,
+    children:[
+      {
+        path: "/account",
+        element: <Account />,
+      },
+      {
+        path: "/genqr",
+        element: <Qrform />,
+      },
+    ]
+  }
+]);
 
-import Qrform from './components/qrform/qrform.jsx'
-import Homepage from './components/Homepage/Homepage.jsx'
-import Account from './components/useraccount/Account.jsx'
-import About from './pages/about/About.jsx'
-import Pricing from './pages/pricing/pricing.jsx'
-import Signup from './pages/signup/signup.jsx'
-import Login from './pages/login/Login.jsx'
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Navbar />
-    <div className="container">
-    <Account/>
-    {/* <Qrform/> */}
-    {/* <Homepage/> */}
-    {/* <About/> */}
-    {/* <Pricing/> */}
-    {/* <Signup/> */}
-    {/* <Login/> */}
-    </div>
-    <Footer />
-  </React.StrictMode>,
-)
+    <AuthProvider>
+      <QRState>
+        <RouterProvider router={router} />
+      </QRState>
+    </AuthProvider>
+  </React.StrictMode>
+);

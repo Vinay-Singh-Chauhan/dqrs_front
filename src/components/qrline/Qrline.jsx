@@ -1,12 +1,50 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import './qrline.css'
 import Modal from '../modal/modal'
 import useModal from '../modal/useModal'
 import QRCode from "qrcode";
-const Qrline = ({link}) => {
+import Editable from '../editable/Editable';
+import QRContext from '../../../context/allqrcontext';
+const Qrline = ({link,uuid}) => {
+  const inputRef = useRef();
+  const context = useContext(QRContext);
+  const {deleteLink,updateLink,getQRs}=context
+  const [loading, setLoading] = useState(false)
+  const [newLink, setNewLink] = useState(link)
   const {isShowing, toggle} = useModal();
   const [size, setSize] = useState("100X100");
   const [imgurl, setImgurl] = useState("");
+  const [editing, setEditing] = useState(false)
+  useEffect(() => {
+    
+  }, [editing])
+  
+ 
+  
+
+  const handleDelete=async()=>{
+    await deleteLink(localStorage.getItem('token'),uuid)
+    getQRs(localStorage.getItem('token'))
+  }
+  const editLink=async(e)=>{
+    console.log(e.target)
+    if(editing==false){
+      // inputRef.current.focus()
+      e.target.classList.remove('fa-pen-to-square')
+      e.target.classList.add('fa-check')
+setEditing(!editing)
+    }else{
+      setLoading(true)
+      var inp=document.getElementById("link_input")
+      console.log(inp.value)
+      setNewLink(inp.value)
+      await updateLink(localStorage.getItem('token'),uuid,newLink)
+      e.target.classList.remove('fa-check')
+      e.target.classList.add('fa-pen-to-square')
+      setEditing(false)
+      setLoading(!editing)
+    }
+  }
     const options = [
         { value: "100", label: "100X100" },
         { value: "200", label: "200X200" },
@@ -46,10 +84,35 @@ const Qrline = ({link}) => {
         });
       };
   return (
-    <div  className="qrline_line">
-        <div className="qrline_link">{link}</div>
+    <div 
+    
+     className="qrline_line">
+        <div className="qrline_link">
+          {/* {!loading?link: */}
+          <Editable
+      text={newLink}
+      placeholder="Enter Link"
+      // childRef={inputRef}
+      type="input"
+      isEditing={editing}
+      setEditing={setEditing}
+      disabled={editing}
+    >
+      <input
+      // disabled={true}
+      id='link_input'
+      className="editable_input"
+        ref={inputRef}
+        type="text"
+        name="task"
+        placeholder="Enter Link"
+        value={newLink}
+        onChange={e => setNewLink(e.target.value)}
+      />
+    </Editable>
+          </div>
         <div className="qrline_sub_menu">
-            <div className="qrline_edit"><i className="fa-solid fa-pen-to-square"></i></div>
+            <div className="qrline_edit"><i onClick={(e)=>{editLink(e)}}className="fa-solid fa-pen-to-square"></i></div>
         <div onClick={toggle} className="qrline_see_qr">See QR</div>
         <Modal
         isShowing={isShowing}
@@ -59,7 +122,7 @@ const Qrline = ({link}) => {
         options={options}
         onChangeSize={onChangeSize}
       />
-        <div className="qrline_delete"><i className="qrline_i fa-sharp fa-solid fa-trash"></i></div>
+        <div onClick={()=>{handleDelete()}} className="qrline_delete"><i className="qrline_i fa-sharp fa-solid fa-trash"></i></div>
         </div>
         
     </div>

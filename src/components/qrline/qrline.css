@@ -2,6 +2,7 @@
     color: antiquewhite;
     margin: 0.2rem 1rem;
     padding: 0.5rem 0.5rem;
+    /* background-color: rgba(0, 0, 0, 0.201); */
     /* border: solid 2px azure; */
     width: 90%;
     color: antiquewhite;
@@ -29,4 +30,16 @@
 }
 .qrline_i{
     cursor: pointer;
+}
+.editable_input{
+    background-color: transparent;
+    padding: 0.5rem;
+    color: antiquewhite;
+    height: 100%;
+    width: 100%;
+    outline: none;
+}
+.editable_input:focus{
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.474);
 }

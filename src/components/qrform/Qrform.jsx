@@ -80,7 +80,8 @@ const Qrform = () => {
     link.click();
   };
   const addLink=async()=>{
-  const data={link:link,email:'chauhansvinay@gmail.com'}
+  const data={link:link}
+  let token =localStorage.getItem('token')
   const response = await fetch(api, {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     mode: "cors", // no-cors, *cors, same-origin
@@ -88,6 +89,7 @@ const Qrform = () => {
     credentials: "same-origin", // include, *same-origin, omit
     headers: {
       "Content-Type": "application/json",
+      'authorization':token
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
     redirect: "follow", // manual, *follow, error
