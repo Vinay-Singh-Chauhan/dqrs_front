@@ -11,8 +11,8 @@ const PersistentLogin = () => {
         try{
             await refresh(setAuth);
         }
-        catch{
-            console.error(err)
+        catch(err){
+            // console.error(err)
         }finally{
             setIsLoading(false);
         }

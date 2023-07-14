@@ -11,39 +11,18 @@ import Pricing from "./pages/pricing/pricing.jsx";
 import Signup from "./pages/signup/signup.jsx";
 import Login from "./pages/login/Login.jsx";
 import QRState from "../context/allqrstate";
-import RequireAuth from './components/requireAuth/RequireAuth.jsx'
+import RequireAuth from "./components/requireAuth/RequireAuth.jsx";
 import { AuthProvider } from "./../context/authContext.jsx";
 import PersistentLogin from "./components/persistentLogin/PersistentLogin.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <PersistentLogin/>,
-    children:[
+    element: <PersistentLogin />,
+    children: [
       {
-        path:"/",
-        element:<App/>,
+        path: "/",
+        element: <App />,
         children: [
-          {
-            path:"/user",
-            element:<PersistentLogin/>,
-            children:[
-              {
-                path:"/user",
-                element:<RequireAuth/>,
-                children:[
-                  {
-                    path: "/user/account",
-                    element: <Account />,
-                  },
-                  {
-                    path: "/user/genqr",
-                    element: <Qrform />,
-                  },
-                ]
-                
-              }
-            ]
-          },
           {
             path: "/",
             element: <Homepage />,
@@ -64,13 +43,29 @@ const router = createBrowserRouter([
             path: "/signup",
             element: <Signup />,
           },
-          
+          {
+            path: "/user",
+            element: <RequireAuth />,
+
+            children: [
+              {
+                path: "/user",
+                element: <Account />,
+              },
+              {
+                path: "/user/account",
+                element: <Account />,
+              },
+              {
+                path: "/user/genqr",
+                element: <Qrform />,
+              },
+            ],
+          },
         ],
-      }
-    ]
-    
+      },
+    ],
   },
-  
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

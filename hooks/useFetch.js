@@ -28,8 +28,8 @@ const useInterceptorFetch = async (api, config,auth,setAuth) => {
       // console.log("not ok")///
       return response;
     }
-    console.log("in unterceptor")
-    console.log(response)
+    // console.log("in unterceptor")
+    // console.log(response)
     return response;
   } catch {
     (err) => {

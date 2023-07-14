@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import './user.css'
+import useLogOut from '../../../hooks/useLogOut'
 const User = ({useremail}) => {
     const [email, setemail] = useState(useremail)
+    const logOut=useLogOut()
   return (
     <div className="user_main">
         <div className="user_email">
@@ -38,7 +40,7 @@ const User = ({useremail}) => {
           Update
         </div>
         <div onClick={()=>{
-          localStorage.removeItem('token')
+          logOut()
           
         }} className="user_submit">
           Logout
