@@ -5,6 +5,11 @@ import useAuth from '../../../hooks/useAuth';
 const Navbar = () => {
   const {auth}=useAuth()
   const [loggedIn, setLoggedIn] = useState(auth?.accessToken?true:false)
+  useEffect(() => {
+    setLoggedIn(auth?.accessToken?true:false)
+  
+  }, [auth])
+  
   return (
     <nav>
         <div className="brand_name">
@@ -23,11 +28,11 @@ const Navbar = () => {
           <Link  className='link_style' to={"/pricing"}>Pricing</Link>
         </li>
         <li className='nav_item'>
-          <Link  className='link_style' to={loggedIn?'/account':"/signin"}>{loggedIn?"Account":"SignIn"}</Link>
+          <Link  className='link_style' to={loggedIn?'/user/account':"/signin"}>{loggedIn?"Account":"SignIn"}</Link>
         </li>
         </ul> 
         <div className="get_started">
-        <Link  className='link_style' to={loggedIn?'/genqr':"/signup"}>{loggedIn?'New QR':"Get Started"}</Link>
+        <Link  className='link_style' to={loggedIn?'/user/genqr':"/signup"}>{loggedIn?'New QR':"Get Started"}</Link>
         </div>
     </nav>
   )

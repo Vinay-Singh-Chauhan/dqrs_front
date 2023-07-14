@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Dropdown from "../dropdown/DropDown";
 import QRCode from "qrcode";
 import "./qrform.css";
+import useInterceptorFetch from "../../../hooks/useFetch";
+import useAuth from "../../../hooks/useAuth";
 const api="http://127.0.0.1:5000/api/qr"
 const Qrform = () => {
 
@@ -9,6 +11,7 @@ const Qrform = () => {
   const [size, setSize] = useState("small");
   const [imgurl, setImgurl] = useState("");
   const [generate, setGenerate] = useState(false)
+  const {auth,setAuth}=useAuth()
   useEffect(()=>{
     if(generate){
       var div= document.getElementById("here_msg");
@@ -42,7 +45,7 @@ const Qrform = () => {
   const onChangeSize = (e) => {
     setSize(e.value);
   };
-  const onSubmit = () => {
+  const onSubmit = async() => {
     var opts = {
       errorCorrectionLevel: "H",
       type: "image/jpeg",
@@ -56,8 +59,10 @@ const Qrform = () => {
       },
     };
     // var canvas = document.getElementById("canvas");
-    addLink()
-    QRCode.toDataURL(link, opts, function (error, url) {
+    let response=await addLink();
+    console.log(response)
+    // response=await response.json()
+    QRCode.toDataURL(response.link, opts, function (error, url) {
       if (error) console.error(error);
 
       var img = document.getElementById("canvas");
@@ -81,22 +86,23 @@ const Qrform = () => {
   };
   const addLink=async()=>{
   const data={link:link}
-  let token =localStorage.getItem('token')
-  const response = await fetch(api, {
+  // let token =localStorage.getItem('token')
+  const response = await useInterceptorFetch(api, {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
     mode: "cors", // no-cors, *cors, same-origin
     cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: "same-origin", // include, *same-origin, omit
+    credentials: "include", // include, *same-origin, omit
     headers: {
       "Content-Type": "application/json",
-      'authorization':token
+      // 'authorization':token
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
     redirect: "follow", // manual, *follow, error
     referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: JSON.stringify(data), // body data type must match "Content-Type" header
-  });
-  return response.json(); // parses JSON response into native JavaScript objects
+  },auth,setAuth);
+  let ParsedResponse=await response.json();
+  return ParsedResponse // parses JSON response into native JavaScript objects
 }
 
 

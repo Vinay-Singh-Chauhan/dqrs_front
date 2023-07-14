@@ -9,7 +9,7 @@ const QR = () => {
   // const [qrs, setQrs] = useState([]);
   const [loading, setLoading] = useState(true);
   const context = useContext(QRContext);
-  console.log(context)
+  // console.log(context)
   // const {auth}=useAuth()
   useEffect(() => {
     getQRs(auth,setAuth);
