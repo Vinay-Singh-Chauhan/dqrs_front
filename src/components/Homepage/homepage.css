@@ -38,12 +38,20 @@
 }
 
 @media (max-width: 576px) { 
+    .homepage_post_head,.homepage_pre_head{
+        margin: 2rem 0rem;
+        font-size: 0.9rem;
+    }
     .homepage_title{
         width: 90%;
     }
     .homepage_main{
         /* display: flex; */
         flex-direction: column-reverse;
+    }
+    .homepage_qr_image{
+        height: 15rem;
+        width: 15rem;
     }
  }
 

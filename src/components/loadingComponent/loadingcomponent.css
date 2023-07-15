@@ -1,0 +1,20 @@
+.loading_heading{
+    text-align: center;
+    font-size: 1rem;
+    color:antiquewhite;
+}
+.loading_center{
+    color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.loading_link{
+    color: antiquewhite;
+}
+.loading_loader img{
+    height: 5rem;
+    width: 5rem;
+}

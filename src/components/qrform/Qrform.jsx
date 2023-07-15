@@ -10,6 +10,7 @@ const Qrform = () => {
   const [link, setLink] = useState("");
   const [size, setSize] = useState("small");
   const [imgurl, setImgurl] = useState("");
+  const [type, setType] = useState('link')
   const [generate, setGenerate] = useState(false)
   const {auth,setAuth}=useAuth()
   useEffect(()=>{
@@ -85,7 +86,7 @@ const Qrform = () => {
     link.click();
   };
   const addLink=async()=>{
-  const data={link:link}
+  const data={link:link,type:type}
   // let token =localStorage.getItem('token')
   const response = await useInterceptorFetch(api, {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -109,7 +110,7 @@ const Qrform = () => {
   
   return (
     <main className="qrform_main">
-      <div className="qrform_qr_code" id={'qr_code'} onClick={downloadQR}>
+      <div className="qrform_qr_code" id={'qr_code'} onClick={imgurl.length>0?downloadQR:()=>{}}>
         <img style={{ cursor: "pointer" }}  id="canvas"></img>
         <p id={'here_msg'}>Your QR will appear here</p>
       </div>
@@ -128,6 +129,16 @@ const Qrform = () => {
             options={[...options]}
             onChange={onChangeSize}
           />
+        </div>
+        <div className="qrform_choose_type">Type: 
+          <label onClick={()=>setType("link")} className={"qrform_type_input_label"} htmlFor="type-link">
+          <input defaultChecked={true} className={"qrform_type_input"} type="radio" name="type" id="type-link"  />
+            Link
+          </label>
+          <label onClick={()=>setType("text")} className={"qrform_type_input_label"} htmlFor="type-text">
+          <input className={"qrform_type_input"} type="radio" name="type" id="type-text"  />
+            Text/Message
+          </label>
         </div>
         <div onClick={onSubmit} className="qrform_submit">
           Generate Dynamic QR

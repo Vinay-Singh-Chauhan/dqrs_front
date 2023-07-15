@@ -1,6 +1,6 @@
 /* .signup_image{
     background-image: url();
 } */
-/* .signup_main{
-    height: 100vh;
-} */
+.signup_main{
+    width: 100%;
+}

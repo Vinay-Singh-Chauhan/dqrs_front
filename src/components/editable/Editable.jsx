@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import './editable.css'
 // Component accept text, placeholder values and also pass what type of Input - input, textarea so that we can use it for styling accordingly
 const Editable = ({
   text,
@@ -59,7 +60,7 @@ Note: For simplicity purpose, I removed all the classnames, you can check the re
         //     // if(!disabled)
         //     setEditing(true)}}
         >
-          <span>
+          <span className="editable_span">
             {text || placeholder || "Editable content"}
           </span>
         </div>

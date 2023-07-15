@@ -2,6 +2,7 @@ import React, {  useEffect, useRef, useState } from 'react'
 import Input from './../../components/input/input'
 import useAuth from './../../../hooks/useAuth'
 import {useLocation,useNavigate,Link} from 'react-router-dom'
+import './login.css'
 const api="http://127.0.0.1:5000/api/auth/login"
 const Login = () => {
   const {setAuth}=useAuth()
@@ -100,7 +101,7 @@ const from =location.state?.from?.pathname||'/'
       >
         {errMsg}
       </p>
-        <div className="qrform_form">
+        <div className="qrform_form login_form">
         <Input
             label={"Email"}
             input_name={"email"}
@@ -133,7 +134,7 @@ const from =location.state?.from?.pathname||'/'
           />
         
         <div onClick={()=>{handleLogIn()}} className="qrform_submit">
-          Log In
+          Sign In
         </div>
       </div>
       <div className="login_image"></div>

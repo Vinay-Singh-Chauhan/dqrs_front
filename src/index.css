@@ -3,7 +3,7 @@
 font-family: 'Quicksand', sans-serif;
     padding: 0;
     margin: 0;
-
+    box-sizing: border-box;
 }
 
 html {
@@ -16,7 +16,10 @@ body{
 }
 .container
 {
-    min-height: 45vh;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;   
     padding: 5% 10%;
 }
 .offscreen{
@@ -29,3 +32,17 @@ body{
     visibility:visible;
     
 }
+
+
+
+@media (max-width: 576px) { 
+    .container{
+        flex-direction: column;
+    }
+ }
+
+@media (max-width: 768px) {
+    .container{
+        flex-direction: column;
+    }
+ }

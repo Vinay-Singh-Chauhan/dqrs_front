@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import {Outlet} from 'react-router-dom'
 import useRefreshToken from './../../../hooks/useRefreshToken'
 import useAuth from '../../../hooks/useAuth'
+import LoadingComponent from '../loadingComponent/LoadingComponent'
+
 const PersistentLogin = () => {
     const [isLoading, setIsLoading] = useState(true);
     const refresh=useRefreshToken();
@@ -30,7 +32,7 @@ const PersistentLogin = () => {
     
   return (
     <>
-    {isLoading ?<p>Loading...</p>:<Outlet/>}
+    {isLoading ?<LoadingComponent/>:<Outlet/>}
     </>
   )
 }

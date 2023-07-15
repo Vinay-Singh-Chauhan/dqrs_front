@@ -1,6 +1,8 @@
 .account_main{
     display: flex;
     flex-direction: column;
+    width: 100%;
+    padding: 2.5rem 0;
 }
 .account_menu_bar{
     /* position: absolute;
@@ -23,3 +25,8 @@
 .account_menu_item:hover{
     background-color: rgb(62, 58, 58);
 }
+@media (max-width: 576px) { 
+ }
+
+@media (max-width: 768px) {
+ }

@@ -14,6 +14,7 @@ import QRState from "../context/allqrstate";
 import RequireAuth from "./components/requireAuth/RequireAuth.jsx";
 import { AuthProvider } from "./../context/authContext.jsx";
 import PersistentLogin from "./components/persistentLogin/PersistentLogin.jsx";
+import ErrorComponent from "./components/errorComponent/ErrorComponent.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -62,10 +63,13 @@ const router = createBrowserRouter([
               },
             ],
           },
+          
         ],
       },
     ],
+    errorElement:<ErrorComponent/>
   },
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

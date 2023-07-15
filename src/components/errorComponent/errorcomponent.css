@@ -1,0 +1,16 @@
+.error_heading{
+    text-align: center;
+    font-size: 10rem;
+    color:grey;
+}
+.error_center{
+    color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.error_link{
+    color: antiquewhite;
+}

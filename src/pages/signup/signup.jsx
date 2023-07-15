@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Input from "../../components/input/input";
+import './signup.css'
 const api = "http://127.0.0.1:5000/api/auth/signup";
 const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
   const PWD_REGEX =

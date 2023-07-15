@@ -2,3 +2,8 @@
     background-color: transparent;
     color: antiquewhite;
 }
+.editable_span{
+    word-break: break-all;
+    word-wrap: break-word;
+    max-width: 60%;
+}

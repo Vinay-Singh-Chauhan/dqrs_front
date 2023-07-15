@@ -93,6 +93,7 @@ setEditing(!editing)
           {/* {!loading?link: */}
           <Editable
       text={newLink}
+      
       placeholder="Enter Link"
       // childRef={inputRef}
       type="input"
