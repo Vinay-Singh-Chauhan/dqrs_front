@@ -10,6 +10,7 @@ const Account = () => {
   const [activeTab, setActiveTab] = useState("account");
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({});
+  const [name, setName] = useState('')
   const {auth,setAuth} =useAuth()
   // const token=auth.accessToken;
   useEffect(() => {
@@ -21,6 +22,7 @@ const Account = () => {
     // console.log("found you")
     let response = await fetchUser(auth,setAuth);
     setUser(response.email)
+    setName(response.name)
     setLoading(false);
     console.log(response);
   };
@@ -58,7 +60,7 @@ const Account = () => {
           </div>
         </div>
         {/* <User /> */}
-        {activeTab == "account" && <User useremail={user} />}
+        {activeTab == "account" && <User useremail={user} name={name} />}
         {activeTab == "qr" && <QR />}
         {activeTab == "pay" && <Payments auth={auth} />}
       </main>

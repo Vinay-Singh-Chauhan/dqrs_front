@@ -4,6 +4,12 @@
 .login_from{
     width: 100%;
 }
+.login_forgot_password{
+    color: antiquewhite;
+    cursor: pointer;
+    text-decoration: underline;
+    
+}
 /* 
 @media (max-width: 576px) { 
     .login_form {

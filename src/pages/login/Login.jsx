@@ -136,6 +136,9 @@ const from =location.state?.from?.pathname||'/'
         <div onClick={()=>{handleLogIn()}} className="qrform_submit">
           Sign In
         </div>
+        <Link to ="/forgotpass"><div className="login_forgot_password">
+          Forgot password
+        </div></Link>
       </div>
       <div className="login_image"></div>
     </div>

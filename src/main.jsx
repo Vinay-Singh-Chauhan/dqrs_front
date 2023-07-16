@@ -15,6 +15,8 @@ import RequireAuth from "./components/requireAuth/RequireAuth.jsx";
 import { AuthProvider } from "./../context/authContext.jsx";
 import PersistentLogin from "./components/persistentLogin/PersistentLogin.jsx";
 import ErrorComponent from "./components/errorComponent/ErrorComponent.jsx";
+import UpdatePassword from "./components/updatePassword/UpdatePassword.jsx";
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
           {
             path: "/signup",
             element: <Signup />,
+          },
+          {
+            path: "/forgotpass",
+            element: <ForgotPassword />,
+          },
+          {
+            path:"/reset/:email/:token",
+            element:<UpdatePassword/>
           },
           {
             path: "/user",

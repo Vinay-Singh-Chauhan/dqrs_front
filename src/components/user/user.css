@@ -69,7 +69,19 @@
     border-bottom: solid purple; */
     /* height: 2rem; */
 }
-
+.user_span{
+    margin: 1rem 0rem;
+    margin-right: 2rem;
+    width: 50%;
+    padding: 0rem 0.2rem;
+    background-color: transparent;
+    color: azure;
+    font-size: 1rem;
+    border: none;
+    text-align: left;
+    /* border-bottom: solid purple; */
+    height: 2rem;
+}
  /* media query */
  @media (max-width: 576px) { 
      
