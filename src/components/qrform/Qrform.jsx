@@ -4,9 +4,10 @@ import QRCode from "qrcode";
 import "./qrform.css";
 import useInterceptorFetch from "../../../hooks/useFetch";
 import useAuth from "../../../hooks/useAuth";
-const api="http://127.0.0.1:5000/api/qr"
+import LoadingComponent from "../loadingComponent/LoadingComponent";
+const api=import.meta.env.VITE_API+"api/qr"
 const Qrform = () => {
-
+  const [loading, setLoading] = useState(false)
   const [link, setLink] = useState("");
   const [size, setSize] = useState("small");
   const [imgurl, setImgurl] = useState("");
@@ -22,13 +23,6 @@ const Qrform = () => {
       // div.setAttribute('vi/')
     // div.innerHTML="<p>Your QR will appear here</p>"
     }
-    // else{
-    //   p=document.createElement('p')
-    //   p.innerHTML='Click on QR to Dwonload it.'
-    //   div.append()
-    // }
-    
-    // img.src = "qr_here.png";
   },[generate])
   const options = [
     { value: "100", label: "100X100" },
@@ -47,6 +41,7 @@ const Qrform = () => {
     setSize(e.value);
   };
   const onSubmit = async() => {
+    setLoading(true)
     var opts = {
       errorCorrectionLevel: "H",
       type: "image/jpeg",
@@ -61,7 +56,8 @@ const Qrform = () => {
     };
     // var canvas = document.getElementById("canvas");
     let response=await addLink();
-    console.log(response)
+    setLoading(false)
+    // console.log(response)
     // response=await response.json()
     QRCode.toDataURL(response.link, opts, function (error, url) {
       if (error) console.error(error);
@@ -75,8 +71,10 @@ const Qrform = () => {
       // console.log("success!");
     });
     setGenerate(true)
+    // setLoading(false)
   };
   const downloadQR = () => {
+    setLoading(true);
     // const url = imgurl.createObjectURL(new Blob([buffer]));
     const link = document.createElement("a");
     link.href = imgurl;
@@ -84,6 +82,7 @@ const Qrform = () => {
     link.setAttribute("download", "qr.png"); //or any other extension
     document.body.appendChild(link);
     link.click();
+    setLoading(false)
   };
   const addLink=async()=>{
   const data={link:link,type:type}
@@ -107,9 +106,13 @@ const Qrform = () => {
 }
 
 
-  
+  // if(loading){
+    // return 
+  // }
   return (
     <main className="qrform_main">
+      {loading && <LoadingComponent/>}
+      
       <div className="qrform_qr_code" id={'qr_code'} onClick={imgurl.length>0?downloadQR:()=>{}}>
         <img style={{ cursor: "pointer" }}  id="canvas"></img>
         <p id={'here_msg'}>Your QR will appear here</p>

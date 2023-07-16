@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import QRContext from "./allqrcontext";
 import useInterceptorFetch from "../hooks/useFetch";
 import useAuth from "../hooks/useAuth";
-const api="http://127.0.0.1:5000/api/qr/"
+const api=import.meta.env.VITE_API+"api/qr/"
 const QRState= (props)=>{
     const [qrs, setqrs] = useState([])
     // const {auth,setAuth}=useAuth()
@@ -23,7 +23,7 @@ const QRState= (props)=>{
         },auth,setAuth);
         //   setQrs(res)
         // setQrs(response)
-        console.log(response)
+        // console.log(response)
         response = await response.json();
         setqrs(response);
         return response;

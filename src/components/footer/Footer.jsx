@@ -7,7 +7,7 @@ const Footer = () => {
             &copy;Dynamic_QRs
         </div>
         <div className="powered_by">
-            Powered By: Hindustan Services
+            Developed By: Vinay Singh Chauhan
         </div>
         <div className="footer_item">Terms and Conditions</div>
         <div className="footer_item">Privacy Policy</div>

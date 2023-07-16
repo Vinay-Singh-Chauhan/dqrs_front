@@ -1,12 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import Input from "../../components/input/input";
+import LoadingComponent from "../../components/loadingComponent/LoadingComponent";
+import regexExps from "../../../regex";
 import './signup.css'
-const api = "http://127.0.0.1:5000/api/auth/signup";
-const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+import { useNavigate } from "react-router-dom";
+const api = import.meta.env.VITE_API+"api/auth/signup";
+const EMAIL_REGEX = regexExps.EMAIL_REGEX;
   const PWD_REGEX =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-  const USER_REGEX = /^[a-zA-Z](?=[a-zA-Z0-9._]{4,23}$)/;
+    regexExps.PWD_REGEX;
+  const USER_REGEX = regexExps.USER_REGEX;
 const Signup = () => {
+  const [loading,setLoading]=useState(false)
   const nameRef = useRef();
   const errRef = useRef();
 
@@ -24,42 +28,48 @@ const Signup = () => {
 
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
-
+const navigate=useNavigate()
   useEffect(() => {
     nameRef.current.focus();
   }, []);
   useEffect(() => {
     const res = USER_REGEX.test(name);
-    console.log(res);
     setValidName(res);
   }, [name]);
   useEffect(() => {
     const res = EMAIL_REGEX.test(email);
-    console.log(res);
     setValidEmail(res);
   }, [email]);
 
   useEffect(() => {
     const res = PWD_REGEX.test(pwd);
-    console.log(res);
     setValidPwd(res);
     
   }, [pwd]);
 
   useEffect(() => {
-    console.log(name);
     setErrMsg("");
   }, [name, pwd,email]);
   
   
   const handleSubmit = async () => {
+    // setLoading(true)\
     const v0 = USER_REGEX.test(name);
     const v1 = EMAIL_REGEX.test(email);
     const v2 = PWD_REGEX.test(pwd);
+    // console.log(v0)
+    // console.log(v1)
+    // console.log(v2)
+    // console.log(email)
     if (!v0 || !v1 || !v2) {
       setErrMsg("Invalid Entry");
+      // setLoading(false);
+      setName("");
+      setEmail("")
+      setPwd("");
       return;
     }
+    setLoading(true)
     try {
       const data = { email: email, password: pwd, name: name };
       fetch(api, {
@@ -76,15 +86,15 @@ const Signup = () => {
         body: JSON.stringify(data), // body data type must match "Content-Type" header
       })
         .then((response) => {
-          // console.log(response);
           if (!response.ok) {
             throw new Error(response);
           }
-          // console.log(response)
-          setSuccess(true);
+          navigate('/signin')
+          setName("");
+      setEmail("")
+      setPwd("");
         })
         .catch((response) => {
-          console.log(response?.message)
           if (!response?.message ) {
             setErrMsg("No server response");
           }else
@@ -96,6 +106,9 @@ const Signup = () => {
             setErrMsg("conflict");
           } else {
             setErrMsg("login falied");
+            setName("");
+      setEmail("")
+      setPwd("");
           }
         });
 
@@ -109,9 +122,15 @@ const Signup = () => {
         setErrMsg("login falied");
       }
       errRef.current.focus();
-      console.log(err);
     }
+    setName("");
+      setEmail("")
+      setPwd("");
+    setLoading(false)
   };
+  if(loading){
+    return <LoadingComponent/>
+  }else
   return (
     <div className="signup_main">
       <p

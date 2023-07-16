@@ -4,12 +4,22 @@
     color:antiquewhite;
 }
 .loading_center{
+    /* background-color: beige; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
     color: antiquewhite;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.588);
+    backdrop-filter: blur(3px);
+    /* height: 100vh; */
+    z-index: 10;
 }
 .loading_link{
     color: antiquewhite;

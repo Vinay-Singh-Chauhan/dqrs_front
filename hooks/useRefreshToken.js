@@ -1,5 +1,4 @@
-import useAuth from './useAuth'
-const api='http://127.0.0.1:5000/refresh'
+const api=import.meta.env.VITE_API+'refresh'
 const useRefreshToken = () => {
     // const {setAuth}=useAuth();
     const refresh=async(setAuth)=>{
@@ -14,11 +13,11 @@ const useRefreshToken = () => {
             redirect: "follow", 
             referrerPolicy: "no-referrer",
           });
-          console.log(response)
+          // console.log(response)
           response=await response.json()
 
           setAuth(prev=>{
-            console.log(JSON.stringify(prev))
+            // console.log(JSON.stringify(prev))
             return {...prev,accessToken:response.accessToken}
           })
         return response.accessToken

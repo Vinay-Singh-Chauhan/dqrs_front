@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react'
 import './updatepassword.css'
 import LoadingComponent from './../loadingComponent/LoadingComponent'
 import { useParams } from 'react-router-dom'
+import MessageModal from '../MessageModal.jsx/MessageModal'
+import useMessageModal from '../MessageModal.jsx/useMessageModal'
 const UpdatePassword = () => {
     const params=useParams()
-    const val_api="http://127.0.0.1:5000/reset/validate/"+ params.email+'/'+params.token
-    const update_api="http://127.0.0.1:5000/reset"
+    const val_api=import.meta.env.VITE_API+"reset/validate/"+ params.email+'/'+params.token
+    const update_api=import.meta.env.VITE_API+"reset"
     const [loading, setLoading] = useState(true)
     const [validated, setValidated] = useState(false)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const {isShowing, toggle,setMessage,message} = useMessageModal();
     useEffect(() => {
       validate()
         setLoading(false)
@@ -28,8 +31,7 @@ const UpdatePassword = () => {
           // 'authorization':token
           // 'Content-Type': 'application/x-www-form-urlencoded',
         }})
-        console.log(response)
-        if(response.status===200){
+        if(response.status==200){
         response=await response.json();
             setEmail(response.email);
             setValidated(true)
@@ -39,7 +41,11 @@ const UpdatePassword = () => {
         }
     }
     const updatepassword=async()=>{
-        await fetch(update_api, {
+      setLoading(true)
+      try{
+
+      
+        let response=await fetch(update_api, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             mode: "cors", // no-cors, *cors, same-origin
             cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -52,6 +58,18 @@ const UpdatePassword = () => {
             referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
             body: JSON.stringify({email:email,password:password}), // body data type must match "Content-Type" header
           })
+          if(response.status==204){
+            setMessage('Password updated successfully');
+            toggle()
+          }else{
+            setMessage('Password was not updated ');
+            toggle()
+          }
+        }catch(error){
+          setMessage(error.message);
+            toggle()
+        }
+        setLoading(false)
             
     }
     if(
@@ -75,6 +93,11 @@ const UpdatePassword = () => {
     <div onClick={()=>{updatepassword()}} className="user_submit">
         Update
     </div>
+    <MessageModal
+        isShowing={isShowing}
+        hide={toggle}
+        message={message}
+      />
         
 </div>)}
 else{

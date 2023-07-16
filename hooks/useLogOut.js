@@ -1,7 +1,7 @@
 import React from 'react'
 import useAuth from './useAuth'
 const useLogOut = () => {
-    const api='http://127.0.0.1:5000/api/auth/logout'
+    const api=import.meta.env.VITE_API+'/api/auth/logout'
     const {setAuth}=useAuth();
     const logOut=async()=>{
         try{
@@ -16,11 +16,11 @@ const useLogOut = () => {
                 redirect: "follow", 
                 referrerPolicy: "no-referrer",
             });
-            console.log(response)
+            // console.log(response)
             setAuth({});
             //   response=await response.json()
         }catch(err){
-            console.log(err);
+            // console.log(err);
         }
     }
   return logOut

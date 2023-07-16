@@ -12,7 +12,7 @@ const EditableDiv = ({link}) => {
         name="task"
         placeholder="Enter Link"
         value={link}
-        onChange={e => console.log()}
+        // onChange={e => console.log()}
       />
     </Editable>
   )

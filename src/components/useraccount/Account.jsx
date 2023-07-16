@@ -5,34 +5,33 @@ import QR from "../allqr/qr";
 import Payments from "../payments/payments";
 import useAuth from "../../../hooks/useAuth";
 import fetchUser from "../../fetchuser/fetchuser";
+import LoadingComponent from "../loadingComponent/LoadingComponent";
 
 const Account = () => {
   const [activeTab, setActiveTab] = useState("account");
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState('');
   const [name, setName] = useState('')
   const {auth,setAuth} =useAuth()
   // const token=auth.accessToken;
   useEffect(() => {
-    // console.log(token)
+    setLoading(true)
     getUser();
+    setLoading(false)
     
-  }, [loading]);
+  }, []);
   const getUser = async () => {
-    // console.log("found you")
     let response = await fetchUser(auth,setAuth);
     setUser(response.email)
     setName(response.name)
-    setLoading(false);
-    console.log(response);
+    // setLoading(false);
   };
 
   // const onChangeTab=(e)=>{
-  //   console.log(e.target.name)
   //     setActiveTab(e.target.name)
   // }
   if (loading) {
-    return <div className="">loading</div>;
+    return <LoadingComponent/>
   } else
     return (
       <main className="account_main">
