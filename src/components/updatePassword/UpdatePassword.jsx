@@ -6,8 +6,8 @@ import MessageModal from '../MessageModal.jsx/MessageModal'
 import useMessageModal from '../MessageModal.jsx/useMessageModal'
 const UpdatePassword = () => {
     const params=useParams()
-    const val_api=import.meta.env.VITE_API+"reset/validate/"+ params.email+'/'+params.token
-    const update_api=import.meta.env.VITE_API+"reset"
+    const val_api=import.meta.env.VITE_API+"/reset/validate/"+ params.email+'/'+params.token
+    const update_api=import.meta.env.VITE_API+"/reset"
     const [loading, setLoading] = useState(true)
     const [validated, setValidated] = useState(false)
     const [email, setEmail] = useState('')

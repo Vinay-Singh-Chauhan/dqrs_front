@@ -8,7 +8,7 @@ const ForgotPassword = () => {
     const [loading, setLoading] = useState(false)
     // const params=useParams()
     // const val_api="http://127.0.0.1:5000/reset/validate/"+ params.email+'/'+params.token
-    const api=import.meta.env.VITE_API+"reset/get"
+    const api=import.meta.env.VITE_API+"/reset/get"
     // const [loading, setLoading] = useState(false)
     const [email, setEmail] = useState('')
     const sendLink=async()=>{

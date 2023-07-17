@@ -4,7 +4,7 @@ import LoadingComponent from "../../components/loadingComponent/LoadingComponent
 import regexExps from "../../../regex";
 import './signup.css'
 import { useNavigate } from "react-router-dom";
-const api = import.meta.env.VITE_API+"api/auth/signup";
+const api = import.meta.env.VITE_API+"/api/auth/signup";
 const EMAIL_REGEX = regexExps.EMAIL_REGEX;
   const PWD_REGEX =
     regexExps.PWD_REGEX;

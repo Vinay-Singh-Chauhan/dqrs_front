@@ -1,4 +1,4 @@
-const api=import.meta.env.VITE_API+'refresh'
+const api=import.meta.env.VITE_API+'/refresh'
 const useRefreshToken = () => {
     // const {setAuth}=useAuth();
     const refresh=async(setAuth)=>{

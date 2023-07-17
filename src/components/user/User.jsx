@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './user.css'
 import useLogOut from '../../../hooks/useLogOut'
-const api=import.meta.env.VITE_API+"reset/get"
+const api=import.meta.env.VITE_API+"/reset/get"
 import LoadingComponent from '../loadingComponent/LoadingComponent'
 import MessageModal from '../MessageModal.jsx/MessageModal'
 import useMessageModal from '../MessageModal.jsx/useMessageModal'

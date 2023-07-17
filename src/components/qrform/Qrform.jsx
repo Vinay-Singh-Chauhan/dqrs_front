@@ -5,7 +5,7 @@ import "./qrform.css";
 import useInterceptorFetch from "../../../hooks/useFetch";
 import useAuth from "../../../hooks/useAuth";
 import LoadingComponent from "../loadingComponent/LoadingComponent";
-const api=import.meta.env.VITE_API+"api/qr"
+const api=import.meta.env.VITE_API+"/api/qr"
 const Qrform = () => {
   const [loading, setLoading] = useState(false)
   const [link, setLink] = useState("");

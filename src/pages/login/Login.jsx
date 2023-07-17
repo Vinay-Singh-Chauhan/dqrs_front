@@ -4,7 +4,7 @@ import useAuth from "./../../../hooks/useAuth";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import "./login.css";
 import LoadingComponent from "../../components/loadingComponent/LoadingComponent";
-const api = import.meta.env.VITE_API+"api/auth/login";
+const api = import.meta.env.VITE_API+"/api/auth/login";
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const { setAuth } = useAuth();

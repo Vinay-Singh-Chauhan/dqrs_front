@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import QRContext from "./allqrcontext";
 import useInterceptorFetch from "../hooks/useFetch";
 import useAuth from "../hooks/useAuth";
-const api=import.meta.env.VITE_API+"api/qr/"
+const api=import.meta.env.VITE_API+"/api/qr/"
 const QRState= (props)=>{
     const [qrs, setqrs] = useState([])
     // const {auth,setAuth}=useAuth()

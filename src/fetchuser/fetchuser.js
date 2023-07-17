@@ -1,7 +1,7 @@
 
 import useInterceptorFetch from "../../hooks/useFetch";
 const fetchUser=async(auth,setAuth)=>{
-  const api=import.meta.env.VITE_API+'api/auth/'
+  const api=import.meta.env.VITE_API+'/api/auth/'
            let response = await useInterceptorFetch(api, {
               method: "GET", // *GET, POST, PUT, DELETE, etc.
               mode: "cors", // no-cors, *cors, same-origin
