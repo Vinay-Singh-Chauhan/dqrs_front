@@ -120,11 +120,11 @@ const Qrline = ({ link, uuid ,qrtype,redirectLink}) => {
         </Editable>
         <div className="qrline_change_types qrform_choose_type">
           <label  onClick={()=>setType("link")} className={"qrform_type_input_label"} htmlFor="type-link">
-          <input defaultChecked={type==='link'?true:false} checked={type==='link'?true:false} disabled={!editing} className={"qrform_type_input"} type="radio" name="type" id="type-link"  />
+          <input defaultChecked={qrtype==='link'?true:false} checked={type==='link'?true:false} disabled={!editing} className={"qrform_type_input"} type="radio" name="type1" id="type-link"  />
             Link
           </label>
           <label  onClick={()=>setType("text")} className={"qrform_type_input_label"} htmlFor="type-text">
-          <input checked={type==='text'?true:false} defaultChecked={type==='text'} disabled={!editing} className={"qrform_type_input"} type="radio" name="type" id="type-text"  />
+          <input checked={qrtype==='text'?true:false} defaultChecked={type==='text'} disabled={!editing} className={"qrform_type_input"} type="radio" name="type" id="type-text"  />
             Text/Message
           </label>
         </div>
