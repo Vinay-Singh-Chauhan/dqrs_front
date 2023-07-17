@@ -19,7 +19,9 @@ const Qrline = ({ link, uuid ,qrtype,redirectLink}) => {
   const [editing, setEditing] = useState(false);
   const [type, setType] = useState(qrtype)
   const { auth, setAuth } = useAuth();
-  useEffect(() => {}, [editing]);
+  useEffect(() => {
+    setType(qrtype)
+  }, [qrtype]);
 
   const handleDelete = async () => {
     setLoading(true);
@@ -29,7 +31,7 @@ const Qrline = ({ link, uuid ,qrtype,redirectLink}) => {
   };
   const editLink = async (e) => {
     // setLoading(true)
-    console.log(type)
+    // console.log(type)
     if (editing == false) {
       // inputRef.current.focus()
       e.target.classList.remove("fa-pen-to-square");
