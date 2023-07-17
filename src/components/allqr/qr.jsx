@@ -15,6 +15,7 @@ const QR = () => {
   }, []);
   const {qrs,getQRs}=context
 
+  console.log(qrs)
   if (loading) {
     return <LoadingComponent/>
   } else

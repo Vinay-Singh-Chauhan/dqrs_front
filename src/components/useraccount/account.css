@@ -29,6 +29,12 @@
     .account_main{
         width: 100%;
     }
+    .account_menu_item{
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.1rem 1.5rem;
+        color: antiquewhite;
+    }
  }
 
 @media (max-width: 768px) {

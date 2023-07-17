@@ -19,9 +19,9 @@ const Qrline = ({ link, uuid ,qrtype,redirectLink}) => {
   const [editing, setEditing] = useState(false);
   const [type, setType] = useState(qrtype)
   const { auth, setAuth } = useAuth();
-  useEffect(() => {
-    setType(qrtype)
-  }, [qrtype]);
+  // useEffect(() => {
+  //   setType(qrtype)
+  // }, [qrtype]);
 
   const handleDelete = async () => {
     setLoading(true);
@@ -118,15 +118,15 @@ const Qrline = ({ link, uuid ,qrtype,redirectLink}) => {
             onChange={(e) => setNewLink(e.target.value)}
           />
         </Editable>
-        <div className="qrline_change_types qrform_choose_type">
-          <label  onClick={()=>setType("link")} className={"qrform_type_input_label"} htmlFor="type-link">
-          <input defaultChecked={qrtype==='link'?true:false} checked={type==='link'?true:false} disabled={!editing} className={"qrform_type_input"} type="radio" name="type1" id="type-link"  />
+        <div className="qrline_change_types qrform_choose_type" id ="type-link">
+          <div  onClick={()=>setType("link")} className={`qrform_type_input_label ${type=='link'?'qrline_checked':''}`} htmlFor="type-link">
+          {/* <input  checked={true} disabled={!editing} className={"qrform_type_input"} type="radio" name="type1"   /> */}
             Link
-          </label>
-          <label  onClick={()=>setType("text")} className={"qrform_type_input_label"} htmlFor="type-text">
-          <input checked={qrtype==='text'?true:false} defaultChecked={type==='text'} disabled={!editing} className={"qrform_type_input"} type="radio" name="type" id="type-text"  />
+          </div>
+          <div  onClick={()=>setType("text")} className={`qrform_type_input_label ${type!='link'?'qrline_checked':''}`} htmlFor="type-text">
+          {/* <input checked={false}  disabled={!editing} className={"qrform_type_input"} type="radio" name="type"   /> */}
             Text/Message
-          </label>
+          </div>
         </div>
       </div>
       <div className="qrline_sub_menu">
