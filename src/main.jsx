@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Qrform from "./components/qrform/qrform.jsx";
+import Qrform from "./components/qrform/Qrform.jsx";
 import Homepage from "./components/Homepage/Homepage.jsx";
 import Account from "./components/useraccount/Account.jsx";
 import About from "./pages/about/About.jsx";
