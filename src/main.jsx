@@ -79,7 +79,10 @@ const router = createBrowserRouter([
     ],
     errorElement:<ErrorComponent/>
   },
-  
+  {
+    path:"*",
+    element:<ErrorComponent/>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
