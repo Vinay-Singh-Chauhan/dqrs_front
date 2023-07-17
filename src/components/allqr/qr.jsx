@@ -14,9 +14,6 @@ const QR = () => {
     getQRs(auth,setAuth);
     setLoading(false)
   }, []);
-useEffect(()=>{
-  setLoading(!loading);
-},[qrs])
   // console.log(qrs)
   if (loading) {
     return <LoadingComponent/>
