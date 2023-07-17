@@ -10,9 +10,8 @@ const User = ({useremail,name}) => {
   const [loading, setLoading] = useState(true)
   const [email, setemail] = useState(useremail)
   useEffect(()=>{
-    useremail &&
-    setLoading(false)
-  },[])
+    useremail && setLoading(false)
+  },[useremail])
     const logOut=useLogOut()
   const sendLink=async()=>{
     setLoading(true)
