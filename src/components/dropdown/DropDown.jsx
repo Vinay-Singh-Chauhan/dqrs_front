@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import "./Dropdown.css";
+import "./dropdown.css";
 
 const Icon = () => {
   return (
