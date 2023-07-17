@@ -10,6 +10,7 @@ const User = ({useremail,name}) => {
   const [loading, setLoading] = useState(true)
   const [email, setemail] = useState(useremail)
   useEffect(()=>{
+    useremail &&
     setLoading(false)
   },[])
     const logOut=useLogOut()
