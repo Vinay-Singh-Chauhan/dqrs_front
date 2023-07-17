@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './user.css'
 import useLogOut from '../../../hooks/useLogOut'
 const api=import.meta.env.VITE_API+"/reset/get"
@@ -7,8 +7,11 @@ import MessageModal from '../MessageModal.jsx/MessageModal'
 import useMessageModal from '../MessageModal.jsx/useMessageModal'
 const User = ({useremail,name}) => {
   const {isShowing, toggle,setMessage,message} = useMessageModal();
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [email, setemail] = useState(useremail)
+  useEffect(()=>{
+    setLoading(false)
+  },[])
     const logOut=useLogOut()
   const sendLink=async()=>{
     setLoading(true)
