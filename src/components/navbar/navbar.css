@@ -6,7 +6,9 @@ nav{
     
     align-items: center;
     justify-content:space-between; 
-    height:60px
+    /* height:fit-content; */
+    /* margin:0 0; */
+    padding: 1.5rem 2rem;
 }
 .navbar{
     width:80%;
@@ -54,6 +56,9 @@ nav{
     
 }
 @media (max-width: 576px) { 
+    nav{
+        padding: 1rem 2rem;
+    }
     .homepage_title{
         width: 90%;
     }
@@ -71,8 +76,9 @@ nav{
         width: 90%;
     }  */
     nav{
-        margin: 2rem 0;
+        /* margin: 2rem 0; */
         /* display: flex; */
+        padding: 1rem 2rem;
         flex-direction: column;
     }
  }

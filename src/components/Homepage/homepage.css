@@ -34,7 +34,9 @@
 }
 .homepage_main{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 80vh;
 }
 
 @media (max-width: 576px) { 

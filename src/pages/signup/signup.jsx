@@ -3,6 +3,7 @@ import Input from "../../components/input/input";
 import LoadingComponent from "../../components/loadingComponent/LoadingComponent";
 import regexExps from "../../../regex";
 import './signup.css'
+import signup from './signup.png'
 import { useNavigate } from "react-router-dom";
 const api = import.meta.env.VITE_API+"/api/auth/signup";
 const EMAIL_REGEX = regexExps.EMAIL_REGEX;
@@ -89,6 +90,7 @@ const navigate=useNavigate()
           if (!response.ok) {
             throw new Error(response);
           }
+          setLoading(false)
           navigate('/signin')
           setName("");
       setEmail("")
@@ -106,15 +108,16 @@ const navigate=useNavigate()
             setErrMsg("conflict");
           } else {
             setErrMsg("login falied");
-            setName("");
+            
+          }setName("");
       setEmail("")
       setPwd("");
-          }
+          setLoading(false)
         });
 
-      setName("");
-      setEmail("")
-      setPwd("");
+      // setName("");
+      // setEmail("")
+      // setPwd("");
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No server response");
@@ -123,10 +126,10 @@ const navigate=useNavigate()
       }
       errRef.current.focus();
     }
-    setName("");
-      setEmail("")
-      setPwd("");
-    setLoading(false)
+    // setName("");
+    //   setEmail("")
+    //   setPwd("");
+    // setLoading(false)
   };
   if(loading){
     return <LoadingComponent/>
@@ -195,7 +198,9 @@ const navigate=useNavigate()
           Sign Up
         </div>
       </div>
-      <div className="signup_image"></div>
+      <div className="signup_image">
+      <img className="login_image" src={signup} alt="decoration image" />
+      </div>
     </div>
   );
 };

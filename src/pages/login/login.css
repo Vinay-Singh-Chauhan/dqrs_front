@@ -1,5 +1,9 @@
 .login_main{
     width: 100%;
+    padding: 0rem 0.5rem;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .login_from{
     width: 100%;
@@ -10,17 +14,24 @@
     text-decoration: underline;
     
 }
-/* 
+.login_image{
+    height: 30rem;
+    max-height: 90vh;
+    max-width: 90vw;
+}
+
 @media (max-width: 576px) { 
-    .login_form {
-        width: 80%;
-       }
+    .login_main{
+        flex-direction: column;
+
+    }
        
  }
 
 @media (max-width: 768px) {
-    .login_form {
-        width: 80%;
-       }
+    .login_main{
+        flex-direction: column;
+
+    }
        
- } */
+ }

@@ -3,6 +3,7 @@ import Input from "./../../components/input/input";
 import useAuth from "./../../../hooks/useAuth";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import "./login.css";
+import user from './user.png'
 import LoadingComponent from "../../components/loadingComponent/LoadingComponent";
 const api = import.meta.env.VITE_API+"/api/auth/login";
 const Login = () => {
@@ -27,7 +28,7 @@ const Login = () => {
   }, [email, pwd]);
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/user/account";
   const handleLogIn = async () => {
     setLoading(true);
     const data = { email: email, password: pwd };
@@ -55,6 +56,7 @@ const Login = () => {
           });
           setPwd("");
           setEmail("");
+          setLoading(false)
           navigate(from, { replace: true });
 
           //   setSuccess(true);
@@ -73,6 +75,7 @@ const Login = () => {
           }
           //   setPwd('');
           // setEmail('')
+          setLoading(false)
         });
     } catch (err) {
       if (!err?.response) {
@@ -82,13 +85,13 @@ const Login = () => {
       }
       errRef.current.focus();
     }
-    setLoading(false);
+    // SsetLoading(false);
+
   };
-  if(loading){
-    return <LoadingComponent/>
-  }else
+  
   return (
     <div className="login_main">
+      {loading && <LoadingComponent/>}
       <p
         ref={errRef}
         aria-live={"assertive"}
@@ -126,6 +129,8 @@ const Login = () => {
 
         <div
           onClick={() => {
+            // setLoading(true)
+            // console.log("S")
             handleLogIn();
           }}
           className="qrform_submit"
@@ -136,7 +141,9 @@ const Login = () => {
           <div className="login_forgot_password">Forgot password</div>
         </Link>
       </div>
-      <div className="login_image"></div>
+      <div className="login_image">
+        <img className="login_image" src={user} alt="decoration image" />
+      </div>
     </div>
   );
 };

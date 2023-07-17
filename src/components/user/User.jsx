@@ -65,6 +65,7 @@ if(loading){
           Change Password
         </div>
         <div onClick={()=>{
+          setLoading(true)
           logOut()
           
         }} className="user_submit">
