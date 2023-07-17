@@ -19,11 +19,11 @@ import UpdatePassword from "./components/updatePassword/UpdatePassword.jsx";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword.jsx";
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/*",
     element: <PersistentLogin />,
     children: [
       {
-        path: "/",
+        path: "/*",
         element: <App />,
         children: [
           {
