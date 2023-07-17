@@ -7,7 +7,7 @@ import Editable from "../editable/Editable";
 import QRContext from "../../../context/allqrcontext";
 import useAuth from "../../../hooks/useAuth";
 import LoadingComponent from "../loadingComponent/LoadingComponent";
-const Qrline = ({ link, uuid }) => {
+const Qrline = ({ link, uuid ,qrtype}) => {
   const inputRef = useRef();
   const context = useContext(QRContext);
   const { deleteLink, updateLink, getQRs } = context;
@@ -17,6 +17,7 @@ const Qrline = ({ link, uuid }) => {
   const [size, setSize] = useState("100X100");
   const [imgurl, setImgurl] = useState("");
   const [editing, setEditing] = useState(false);
+  const [type, setType] = useState(qrtype)
   const { auth, setAuth } = useAuth();
   useEffect(() => {}, [editing]);
 
@@ -28,7 +29,7 @@ const Qrline = ({ link, uuid }) => {
   };
   const editLink = async (e) => {
     // setLoading(true)
-    // console.log(e.target)
+    console.log(type)
     if (editing == false) {
       // inputRef.current.focus()
       e.target.classList.remove("fa-pen-to-square");
@@ -39,7 +40,8 @@ const Qrline = ({ link, uuid }) => {
       var inp = document.getElementById("link_input");
       // console.log(inp.value);
       setNewLink(inp.value);
-      await updateLink(uuid, newLink, auth, setAuth);
+      // setType()
+      await updateLink(uuid, newLink,type, auth, setAuth);
       e.target.classList.remove("fa-check");
       e.target.classList.add("fa-pen-to-square");
       setEditing(!editing);
@@ -114,6 +116,16 @@ const Qrline = ({ link, uuid }) => {
             onChange={(e) => setNewLink(e.target.value)}
           />
         </Editable>
+        <div className="qrline_change_types qrform_choose_type">
+          <label  onClick={()=>setType("link")} className={"qrform_type_input_label"} htmlFor="type-link">
+          <input defaultChecked={type==='link'?true:false} disabled={!editing} className={"qrform_type_input"} type="radio" name="type" id="type-link"  />
+            Link
+          </label>
+          <label  onClick={()=>setType("text")} className={"qrform_type_input_label"} htmlFor="type-text">
+          <input defaultChecked={type==='text'} disabled={!editing} className={"qrform_type_input"} type="radio" name="type" id="type-text"  />
+            Text/Message
+          </label>
+        </div>
       </div>
       <div className="qrline_sub_menu">
         <div className="qrline_edit">
@@ -143,6 +155,8 @@ const Qrline = ({ link, uuid }) => {
         >
           <i className="qrline_i fa-sharp fa-solid fa-trash"></i>
         </div>
+        
+        
       </div>
     </div>
   );

@@ -14,6 +14,7 @@ const EditableDiv = ({link}) => {
         value={link}
         // onChange={e => console.log()}
       />
+      
     </Editable>
   )
 }

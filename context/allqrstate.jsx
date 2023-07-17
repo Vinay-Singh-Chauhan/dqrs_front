@@ -48,8 +48,8 @@ const QRState= (props)=>{
         // console.log(response)
         return response;
       }
-    const updateLink = async (uuid,newLink,auth,setAuth) => {
-        const data={link:newLink}
+    const updateLink = async (uuid,newLink,type,auth,setAuth) => {
+        const data={link:newLink,type:type}
         let response = await useInterceptorFetch(api+uuid, {
           method: "POST", // *GET, POST, PUT, DELETE, etc.
           mode: "cors", // no-cors, *cors, same-origin

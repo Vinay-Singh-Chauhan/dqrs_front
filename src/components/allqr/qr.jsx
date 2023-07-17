@@ -21,7 +21,7 @@ const QR = () => {
     return (
       <div className="allqr_main">
         {qrs.map((e) => {
-          return <Qrline key={e._id} uuid={e.uuid} link={e.link} />;
+          return <Qrline key={e._id} uuid={e.uuid} link={e.link} qrtype={e.type} />;
         })}
       </div>
     );

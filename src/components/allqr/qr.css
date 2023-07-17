@@ -16,3 +16,15 @@
 .allqr_item:hover{
     background-color: rgba(61, 58, 58, 0.349);
 }
+
+@media (max-width: 576px) { 
+    .allqr_main{
+        width: 100%;
+    }
+ }
+
+@media (max-width: 768px) {
+    .allqr_main{
+        width: 100%;
+    }
+ }

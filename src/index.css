@@ -38,11 +38,15 @@ body{
 @media (max-width: 576px) { 
     .container{
         flex-direction: column;
+        width: 100%;
+        padding: 0;
     }
  }
 
 @media (max-width: 768px) {
     .container{
         flex-direction: column;
+        width: 100%;
+        padding: 0%;
     }
  }

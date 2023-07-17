@@ -26,7 +26,13 @@
     background-color: rgb(62, 58, 58);
 }
 @media (max-width: 576px) { 
+    .account_main{
+        width: 100%;
+    }
  }
 
 @media (max-width: 768px) {
+    .account_main{
+        width: 100%;
+    }
  }
