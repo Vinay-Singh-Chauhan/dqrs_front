@@ -8,13 +8,15 @@ const QR = () => {
   const {auth,setAuth}=useAuth()
   const [loading, setLoading] = useState(true);
   const context = useContext(QRContext);
+  const {qrs,getQRs}=context
   useEffect(() => {
     setLoading(true)
     getQRs(auth,setAuth);
     setLoading(false)
   }, []);
-  const {qrs,getQRs}=context
-
+useEffect(()=>{
+  setLoading(!loading);
+},[qrs])
   // console.log(qrs)
   if (loading) {
     return <LoadingComponent/>
