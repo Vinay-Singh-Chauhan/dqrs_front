@@ -7,7 +7,7 @@ import Editable from "../editable/Editable";
 import QRContext from "../../../context/allqrcontext";
 import useAuth from "../../../hooks/useAuth";
 import LoadingComponent from "../loadingComponent/LoadingComponent";
-const Qrline = ({ link, uuid ,qrtype}) => {
+const Qrline = ({ link, uuid ,qrtype,redirectLink}) => {
   const inputRef = useRef();
   const context = useContext(QRContext);
   const { deleteLink, updateLink, getQRs } = context;
@@ -80,7 +80,7 @@ const Qrline = ({ link, uuid ,qrtype}) => {
         light: "#fff",
       },
     };
-    QRCode.toDataURL(link, opts, function (error, url) {
+    QRCode.toDataURL(redirectLink, opts, function (error, url) {
       if (error) console.error(error);
 
       var img = document.getElementById("modal_canvas");
@@ -122,7 +122,7 @@ const Qrline = ({ link, uuid ,qrtype}) => {
             Link
           </label>
           <label  onClick={()=>setType("text")} className={"qrform_type_input_label"} htmlFor="type-text">
-          <input checked={type==='link'?true:false} defaultChecked={type==='text'} disabled={!editing} className={"qrform_type_input"} type="radio" name="type" id="type-text"  />
+          <input checked={type==='text'?true:false} defaultChecked={type==='text'} disabled={!editing} className={"qrform_type_input"} type="radio" name="type" id="type-text"  />
             Text/Message
           </label>
         </div>
