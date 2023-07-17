@@ -20,8 +20,9 @@
 .qrline_link{
     max-width: 50%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+
 }
 .qrline_sub_menu{
     width: 40%;
