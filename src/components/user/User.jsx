@@ -29,7 +29,7 @@ const User = ({useremail,name}) => {
       },
       redirect: "follow", // manual, *follow, error
       referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      body: JSON.stringify({email:email}), // body data type must match "Content-Type" header
+      body: JSON.stringify({email:useremail}), // body data type must match "Content-Type" header
     })
     if(response.status==200){
       setMessage('Password reset link sent successfully to the email address');
