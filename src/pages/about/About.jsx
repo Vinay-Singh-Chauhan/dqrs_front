@@ -12,6 +12,11 @@ const About = () => {
         <p>
             All you need to do is to sign up and generate QR Code. You can update these QRs too. 
         </p>
+        <br></br>
+        <h1 className='about_h1'>An Important Note:</h1>
+        <p>
+            Dynamic_QRs is still in development stage and this is only a beta release. Any feedback, bug report, feature request or suggestion is welcome. You can provide your views @ vinayhost11@gmail.com 
+        </p>
     </div>
   )
 }

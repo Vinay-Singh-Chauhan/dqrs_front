@@ -1,0 +1,16 @@
+.erase_main{
+    width: 50vw;
+    padding: 0rem 0.5rem;
+    display:flex;
+    /* justify-content: center; */
+    align-items: center;
+}
+.erase_form{
+    width: 100%;
+}
+.erase_warning{
+    color: red;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+}

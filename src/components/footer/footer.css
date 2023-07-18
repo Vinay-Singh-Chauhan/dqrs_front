@@ -21,6 +21,7 @@ footer{
     margin:0.7rem  0;
 }
 .footer_item{
+    text-decoration: none;
     color:gray;
     font-weight: 600;
     font-size: 1.3rem;

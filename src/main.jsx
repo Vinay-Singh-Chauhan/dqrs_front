@@ -17,6 +17,9 @@ import PersistentLogin from "./components/persistentLogin/PersistentLogin.jsx";
 import ErrorComponent from "./components/errorComponent/ErrorComponent.jsx";
 import UpdatePassword from "./components/updatePassword/UpdatePassword.jsx";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword.jsx";
+import EraseData from "./components/EraseData/EraseData.jsx";
+import PrivacyPolicy from "./components/PrivacyPolicy/PrivacyPolicy.jsx";
+import Terms from "./components/Terms/Terms.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +32,14 @@ const router = createBrowserRouter([
           {
             path: "/",
             element: <Homepage />,
+          },
+          {
+            path: "/privacy",
+            element: <PrivacyPolicy />,
+          },
+          {
+            path: "/terms",
+            element: <Terms />,
           },
           {
             path: "/about",
@@ -70,6 +81,10 @@ const router = createBrowserRouter([
               {
                 path: "/user/genqr",
                 element: <Qrform />,
+              },
+              {
+                path: "/user/erase",
+                element: <EraseData />,
               },
             ],
           },
