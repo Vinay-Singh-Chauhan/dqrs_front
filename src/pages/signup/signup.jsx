@@ -136,14 +136,14 @@ const navigate=useNavigate()
   }else
   return (
     <div className="signup_main">
-      <p
+      
+      <div className="qrform_form"><p
         ref={errRef}
         aria-live={"assertive"}
         className={errMsg ? "errorMsg" : "offscreen"}
       >
         {errMsg}
       </p>
-      <div className="qrform_form">
       <Input
             label={"Name"}
             input_name={"name"}

@@ -92,14 +92,14 @@ const Login = () => {
   return (
     <div className="login_main">
       {loading && <LoadingComponent/>}
-      <p
+      
+      <div className="qrform_form login_form"><p
         ref={errRef}
         aria-live={"assertive"}
         className={errMsg ? "errorMsg" : "offscreen"}
       >
         {errMsg}
       </p>
-      <div className="qrform_form login_form">
         <Input
           label={"Email"}
           input_name={"email"}

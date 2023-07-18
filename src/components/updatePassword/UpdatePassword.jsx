@@ -15,7 +15,7 @@ const UpdatePassword = () => {
     const {isShowing, toggle,setMessage,message} = useMessageModal();
     useEffect(() => {
       validate()
-        setLoading(false)
+        // setLoading(false)///S
       return () => {
         setEmail('');
       }
@@ -39,6 +39,7 @@ const UpdatePassword = () => {
         else {
             setValidated(false)
         }
+        setLoading(false)
     }
     const updatepassword=async()=>{
       setLoading(true)
