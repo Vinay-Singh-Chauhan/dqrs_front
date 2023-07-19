@@ -20,6 +20,9 @@ const QR = () => {
   } else
     return (
       <div className="allqr_main">
+        {qrs.length==0 && <div className="payment_main">
+        <div className='payment_center_msg'>Generate a QR code to view here</div>
+    </div>}
         {qrs.map((e) => {
           return <Qrline key={e._id} uuid={e.uuid} link={e.link} redirectLink={e.redirectLink} qrtype={e.type} />;
         })}
