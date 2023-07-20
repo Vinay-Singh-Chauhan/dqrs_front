@@ -27,7 +27,13 @@
     }
        
  }
-
+.self_center_align{
+    align-self: center;
+    justify-self: center;
+}
+.login_separator{
+    margin: 1rem 0.1rem;
+}
 @media (max-width: 768px) {
     .login_main{
         flex-direction: column;

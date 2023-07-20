@@ -5,6 +5,7 @@ import regexExps from "../../../regex";
 import './signup.css'
 import signup from './signup.png'
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 const api = import.meta.env.VITE_API+"/api/auth/signup";
 const EMAIL_REGEX = regexExps.EMAIL_REGEX;
   const PWD_REGEX =
@@ -29,8 +30,20 @@ const Signup = () => {
 
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
+  const {setAuth}=useAuth()
+  const from = location.state?.from?.pathname || "/user/account";
 const navigate=useNavigate()
   useEffect(() => {
+    /* global google */
+    google.accounts.id.initialize({
+      client_id:import.meta.env.VITE_CLIENT_ID,
+      callback:handleGoogleSignIn
+
+    });
+    google.accounts.id.renderButton(
+      document.getElementById("googleAuthButton"),
+      {theme:"outline",size:"large"}
+    )
     nameRef.current.focus();
   }, []);
   useEffect(() => {
@@ -52,7 +65,64 @@ const navigate=useNavigate()
     setErrMsg("");
   }, [name, pwd,email]);
   
-  
+  const glapi = import.meta.env.VITE_API+"/api/auth/googlesignup";
+  const handleGoogleSignIn=(response)=>{
+    setLoading(true);
+    const data = { credential:response.credential };
+    try {
+      fetch(glapi, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "include", // include, *same-origin, omit
+        headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(data), // body data type must match "Content-Type" header
+      })
+        .then(async (response) => {
+          if (!response.ok) {
+            throw new Error(response.status);
+          }
+          response = await response.json();
+          setAuth({
+            accessToken: response.accessToken,
+          });
+          setPwd("");
+          setEmail("");
+          setLoading(false)
+          navigate(from, { replace: true });
+
+          //   setSuccess(true);
+        })
+        .catch((response) => {
+          if (!response?.message) {
+            setErrMsg("No server response");
+          } else if (response?.message === "400") {
+            setErrMsg("Missing fields");
+          } else if (response?.message == "401") {
+            setErrMsg("unauthorized");
+          } else if (response?.message == "409") {
+            setErrMsg("conflict");
+          } else {
+            setErrMsg("login falied");
+          }
+          //   setPwd('');
+          // setEmail('')
+          setLoading(false)
+        });
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg("No server response");
+      } else {
+        setErrMsg("login falied");
+      }
+      errRef.current.focus();
+    }
+    }
   const handleSubmit = async () => {
     // setLoading(true)\
     const v0 = USER_REGEX.test(name);
@@ -86,15 +156,20 @@ const navigate=useNavigate()
         referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
         body: JSON.stringify(data), // body data type must match "Content-Type" header
       })
-        .then((response) => {
+        .then(async(response) => {
           if (!response.ok) {
             throw new Error(response);
           }
-          setLoading(false)
-          navigate('/signin')
           setName("");
-      setEmail("")
-      setPwd("");
+          setEmail("")
+          setPwd("");
+          response=await response.json()
+          setAuth({
+            accessToken: response.accessToken,
+          });
+          setLoading(false)
+          navigate(from, { replace: true });
+          
         })
         .catch((response) => {
           if (!response?.message ) {
@@ -197,6 +272,8 @@ const navigate=useNavigate()
         >
           Sign Up
         </div>
+        <hr className="login_separator"/>
+        <div className="self_center_align" id="googleAuthButton"></div>
       </div>
       <div className="signup_image">
       <img className="login_image" src={signup} alt="decoration image" />
