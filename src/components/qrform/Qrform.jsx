@@ -42,35 +42,45 @@ const Qrform = () => {
   };
   const onSubmit = async() => {
     setLoading(true)
-    var opts = {
-      errorCorrectionLevel: "H",
-      type: "image/jpeg",
-      quality: 0.3,
-      height:size,
-      width:size,
-      margin: 1,
-      color: {
-        dark: "#000",
-        light: "#fff",
-      },
-    };
-    // var canvas = document.getElementById("canvas");
-    let response=await addLink();
-    setLoading(false)
-    // console.log(response)
-    // response=await response.json()
-    QRCode.toDataURL(response.link, opts, function (error, url) {
-      if (error) console.error(error);
+    try{
 
-      var img = document.getElementById("canvas");
-      img.src = url;
-      // img.style={"height":size+'px',"width":size+'px'}
-      // img.setAttribute('style',)
-      setImgurl(url);
-
-      // console.log("success!");
-    });
-    setGenerate(true)
+      var opts = {
+        errorCorrectionLevel: "H",
+        type: "image/jpeg",
+        quality: 0.3,
+        height:size,
+        width:size,
+        margin: 1,
+        color: {
+          dark: "#000",
+          light: "#fff",
+        },
+      };
+      // var canvas = document.getElementById("canvas");
+      let response=await addLink();
+      if(!response){
+        setLoading(false)
+      }else{
+        
+        setLoading(false)
+        // console.log(response)
+        // response=await response.json()
+        QRCode.toDataURL(response.link, opts, function (error, url) {
+          if (error) console.error(error);
+          
+          var img = document.getElementById("canvas");
+          img.src = url;
+          // img.style={"height":size+'px',"width":size+'px'}
+        // img.setAttribute('style',)
+        setImgurl(url);
+        
+        // console.log("success!");
+      });
+      setGenerate(true)
+    }
+    }catch(err){
+      setGenerate(false);
+    }
     // setLoading(false)
   };
   const downloadQR = () => {
@@ -87,13 +97,15 @@ const Qrform = () => {
   const addLink=async()=>{
   const data={link:link,type:type}
   // let token =localStorage.getItem('token')
-  const response = await useInterceptorFetch(api, {
-    method: "POST", // *GET, POST, PUT, DELETE, etc.
-    mode: "cors", // no-cors, *cors, same-origin
-    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: "include", // include, *same-origin, omit
-    headers: {
-      "Content-Type": "application/json",
+  try{
+
+    const response = await useInterceptorFetch(api, {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, *cors, same-origin
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: "include", // include, *same-origin, omit
+      headers: {
+        "Content-Type": "application/json",
       // 'authorization':token
       // 'Content-Type': 'application/x-www-form-urlencoded',
     },
@@ -101,8 +113,16 @@ const Qrform = () => {
     referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: JSON.stringify(data), // body data type must match "Content-Type" header
   },auth,setAuth);
+  if(!response.ok){
+    return null
+  }
   let ParsedResponse=await response.json();
   return ParsedResponse // parses JSON response into native JavaScript objects
+}catch(err){
+  // setLoading(false);
+  return null
+
+}
 }
 
 

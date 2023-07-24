@@ -10,7 +10,7 @@ const About = () => {
         <br></br>
         <h1 className='about_h1'>What do I need to do?</h1>
         <p>
-            All you need to do is to sign up and generate QR Code. You can update these QRs too. 
+            All you need to do is to sign up and generate QR Code. You can update these QRs too. Internet Connectivity is a must for creating QR codes. Also while you scan them.
         </p>
         <br></br>
         <h1 className='about_h1'>An Important Note:</h1>

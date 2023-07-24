@@ -1,5 +1,5 @@
 .homepage_qr_image{
-   background-image: url('../../../public/qr_image.png');
+   background-image: url('./qr_image.png');
    height: 400px;
    width: 400px;
    background-repeat: no-repeat;

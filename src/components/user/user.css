@@ -81,6 +81,9 @@
     text-align: left;
     /* border-bottom: solid purple; */
     height: 2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
  /* media query */
  @media (max-width: 576px) { 
